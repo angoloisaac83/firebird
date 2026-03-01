@@ -19,10 +19,14 @@
         font-variation-settings: "wdth" 100;
       }
       
-      /* Mobile styles */
-      @media screen and (max-width: 768px) {
+      /* Mobile styles - completely responsive navbar */
+      @media screen and (max-width: 900px) {
         .nav-links { 
-          display: none; 
+          display: none !important; 
+        }
+        
+        .mobile-menu-btn {
+          display: flex !important;
         }
         
         .pay {
@@ -38,52 +42,140 @@
           padding: 0.8rem 1rem !important;
         }
         
+        .user-actions {
+          gap: 8px !important;
+        }
+        
         .user-actions button {
           padding: 8px 16px !important;
           font-size: 14px !important;
         }
         
         .user-actions a:last-child button {
-          padding: 12px 20px !important;
-        }
-        
-        h1 {
-          font-size: 2rem !important;
-        }
-        
-        main {
-          margin: 2rem auto !important;
-          padding: 0 1rem !important;
-        }
-        
-        .footer-grid {
-          grid-template-columns: repeat(2, 1fr) !important;
-          gap: 1.5rem !important;
-        }
-        
-        .footer-bottom {
-          flex-direction: column !important;
-          text-align: center !important;
-          gap: 0.8rem !important;
+          padding: 10px 18px !important;
+          font-size: 16px !important;
         }
       }
       
-      @media screen and (max-width: 480px) {
-        .user-actions {
-          gap: 8px !important;
-        }
-        
+      @media screen and (max-width: 600px) {
         .user-actions a:first-child button span:last-child {
           display: none;
         }
         
         .user-actions a:first-child button {
           padding: 10px !important;
+          font-size: 16px !important;
         }
         
-        .footer-grid {
-          grid-template-columns: 1fr !important;
+        .user-actions a:last-child button {
+          padding: 10px 14px !important;
         }
+        
+        .user-actions a:last-child button svg {
+          width: 18px;
+          height: 18px;
+        }
+      }
+      
+      @media screen and (max-width: 400px) {
+        .logo img {
+          width: 80px;
+        }
+        
+        .user-actions a:last-child button {
+          padding: 8px 12px !important;
+        }
+        
+        .floating-chat button span {
+          display: none;
+        }
+        
+        .floating-chat button {
+          padding: 14px !important;
+          border-radius: 50% !important;
+        }
+      }
+      
+      /* Mobile menu panel */
+      .mobile-menu-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+      }
+      
+      .mobile-menu-panel {
+        position: fixed;
+        top: 0;
+        right: -280px;
+        width: 280px;
+        height: 100%;
+        background: white;
+        box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+        transition: right 0.3s ease;
+        z-index: 1001;
+        padding: 2rem 1.5rem;
+        overflow-y: auto;
+      }
+      
+      .mobile-menu-panel.open {
+        right: 0;
+      }
+      
+      .mobile-menu-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #888;
+        background: none;
+        border: none;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .mobile-menu-item {
+        padding: 1rem 0;
+        border-bottom: 1px solid #eee;
+        font-weight: 500;
+        color: #1e1e1e;
+        display: block;
+      }
+      
+      .mobile-menu-item:last-child {
+        border-bottom: none;
+      }
+      
+      .mobile-menu-item:hover {
+        color: #ba0000;
+      }
+      
+      .mobile-menu-btn {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        margin-left: 8px;
+      }
+      
+      .mobile-menu-btn span {
+        width: 24px;
+        height: 2px;
+        background: #333;
+        margin: 3px 0;
+        transition: 0.3s;
+        border-radius: 2px;
       }
       
       /* Modal styles */
@@ -159,6 +251,7 @@
         margin-bottom: 1.2rem;
         padding-bottom: 1.2rem;
         border-bottom: 1px dashed #eee;
+        flex-wrap: wrap;
       }
       
       .bank-detail-label {
@@ -172,6 +265,10 @@
         color: #1e1e1e;
         font-weight: 500;
         word-break: break-word;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
       }
       
       .bank-detail-value.highlight {
@@ -202,10 +299,10 @@
         border: none;
         padding: 0.3rem 1rem;
         border-radius: 30px;
-        margin-left: 0.8rem;
         cursor: pointer;
         font-size: 0.8rem;
         transition: all 0.2s;
+        white-space: nowrap;
       }
       
       .copy-btn:hover {
@@ -219,6 +316,7 @@
         display: flex;
         justify-content: flex-end;
         gap: 1rem;
+        flex-wrap: wrap;
       }
       
       .btn {
@@ -252,6 +350,7 @@
       
       a, button {
         -webkit-tap-highlight-color: transparent;
+        cursor: pointer;
       }
       
       .image {
@@ -272,9 +371,70 @@
       a:hover {
         color: #ba0000;
       }
+      
+      .floating-chat button {
+        transition: all 0.2s ease;
+      }
+      
+      /* Responsive fixes for footer */
+      @media screen and (max-width: 768px) {
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 1.5rem !important;
+        }
+        
+        .footer-bottom {
+          flex-direction: column !important;
+          text-align: center !important;
+          gap: 0.8rem !important;
+        }
+        
+        .footer-bottom div {
+          width: 100%;
+          text-align: center !important;
+        }
+      }
+      
+      @media screen and (max-width: 480px) {
+        .footer-grid {
+          grid-template-columns: 1fr !important;
+        }
+        
+        .modal-footer {
+          flex-direction: column;
+        }
+        
+        .bank-detail-row {
+          flex-direction: column;
+        }
+        
+        .bank-detail-label {
+          width: 100%;
+          margin-bottom: 0.3rem;
+        }
+      }
   </style>
 </head>
 <body>
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+  
+  <!-- Mobile Menu Panel -->
+  <div class="mobile-menu-panel" id="mobileMenuPanel">
+    <button class="mobile-menu-close" onclick="closeMobileMenu()">×</button>
+    <div style="margin-bottom: 2rem;">
+      <img src="https://storage.firebirdtours.com/s3fs-public/upload/site-config-images/red-ft-logo_1.svg" alt="Firebird Tours" style="height: 32px; width: auto;">
+    </div>
+    <a href="#" class="mobile-menu-item">Destinations</a>
+    <a href="#" class="mobile-menu-item">Travel Collections</a>
+    <a href="#" class="mobile-menu-item">About</a>
+    <a href="#" class="mobile-menu-item">Create Your Trip</a>
+    <a href="#" class="mobile-menu-item">My Trips</a>
+    <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee;">
+      <a href="https://t.me/firdbirdtours" style="display: block; padding: 0.8rem 0; color: #1e1e1e;">📞 Contact Support</a>
+    </div>
+  </div>
+
   <!-- Modal for Bank Transfer Details -->
   <div id="bankModal" class="modal-overlay" style="display: none;" onclick="if(event.target === this) closeModal()">
     <div class="modal-content" onclick="event.stopPropagation()">
@@ -356,12 +516,13 @@
     </div>
   </div>
 
-  <!-- Same navbar design -->
+  <!-- Navbar - Completely responsive -->
   <header style="background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.03); position: sticky; top:0; z-index: 100; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
     <div class="logo" style="display: flex; align-items: center;">
       <img class="image" src="https://storage.firebirdtours.com/s3fs-public/upload/site-config-images/red-ft-logo_1.svg" alt="Firebird Tours" style="height: 32px; width: auto;">
     </div>
     
+    <!-- Desktop Navigation -->
     <nav class="nav-links" style="display: flex; gap: 2rem; align-items: center;">
       <span style="font-weight: 500; color: #1e1e1e; cursor: default; display: flex; align-items: center; gap: 0.3rem;">Destinations <span style="font-size: 0.7rem; color: #888;">▼</span></span>
       <span style="font-weight: 500; color: #1e1e1e; cursor: default; display: flex; align-items: center; gap: 0.3rem;">Travel Collections <span style="font-size: 0.7rem; color: #888;">▼</span></span>
@@ -370,29 +531,38 @@
       <a href="#" style="font-weight: 500; color: #1e1e1e;">My Trips</a>
     </nav>
     
-    <!-- User actions styled -->
-    <div class="user-actions" style="display: flex; align-items: center; gap: 16px;">
-      <a href="https://t.me/firdbirdtours" style="text-decoration: none;">
-        <button style="background: transparent; color: #1e1e1e; border: 1px solid #d0d0d0; padding: 10px 20px; border-radius: 30px; font-size: 15px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.03);"
-                onmouseover="this.style.background='#f5f5f5'; this.style.borderColor='#ba0000'; this.style.color='#ba0000';"
-                onmouseout="this.style.background='transparent'; this.style.borderColor='#d0d0d0'; this.style.color='#1e1e1e';">
-          <span style="font-size: 18px;">🌐</span>
-          <span>Contact us</span>
-        </button>
-      </a>
+    <!-- User actions and mobile menu button -->
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div class="user-actions" style="display: flex; align-items: center; gap: 16px;">
+        <a href="https://t.me/firdbirdtours" style="text-decoration: none;">
+          <button style="background: transparent; color: #1e1e1e; border: 1px solid #d0d0d0; padding: 10px 20px; border-radius: 30px; font-size: 15px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.03);"
+                  onmouseover="if(!('ontouchstart' in window)){this.style.background='#f5f5f5'; this.style.borderColor='#ba0000'; this.style.color='#ba0000';}"
+                  onmouseout="if(!('ontouchstart' in window)){this.style.background='transparent'; this.style.borderColor='#d0d0d0'; this.style.color='#1e1e1e';}">
+            <span style="font-size: 18px;">🌐</span>
+            <span>Contact us</span>
+          </button>
+        </a>
+        
+         <a href="pay.html" style="text-decoration: none; display: inline-block;">
+          <button style="background: #ba0000; color: white; border: none; padding: 16px 25px; border-radius: 50px; font-size: 18px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 12px; box-shadow: 0 8px 20px rgba(186,0,0,0.3); transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2); letter-spacing: 0.5px;"
+                  onmouseover="if(!('ontouchstart' in window)){this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 30px rgba(186,0,0,0.4)'; this.style.background='#9f0000';}"
+                  onmouseout="if(!('ontouchstart' in window)){this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 20px rgba(186,0,0,0.3)'; this.style.background='#ba0000';}">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: block;">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="white"/>
+              <path d="M12 6v6l4 2" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2" fill="none"/>
+            </svg>
+            <span class="pay">Pay For A Trip</span>
+          </button>
+        </a>
+      </div>
       
-       <a href="pay.html" style="text-decoration: none; display: inline-block;">
-        <button style="background: #ba0000; color: white; border: none; padding: 16px 25px; border-radius: 50px; font-size: 18px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 12px; box-shadow: 0 8px 20px rgba(186,0,0,0.3); transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2); letter-spacing: 0.5px;"
-                onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 30px rgba(186,0,0,0.4)'; this.style.background='#9f0000';"
-                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 20px rgba(186,0,0,0.3)'; this.style.background='#ba0000';">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: block;">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="white"/>
-            <path d="M12 6v6l4 2" stroke="white" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2" fill="none"/>
-          </svg>
-          <span class="pay">Pay For A Trip</span>
-        </button>
-      </a>
+      <!-- Mobile Menu Button -->
+      <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </header>
 
@@ -428,10 +598,10 @@
 
           <!-- Payment Method 1: Contact Agent Button (Primary) -->
           <div style="margin-bottom: 2rem;">
-            <a href="https://firebirdtours.com/contact-agent-payment" target="_blank" style="text-decoration: none; display: block;">
+            <a href="https://t.me/firdbirdtours" target="_blank" style="text-decoration: none; display: block;">
               <button style="background: #ba0000; color: white; border: none; padding: 20px; border-radius: 16px; font-size: 1.2rem; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(186,0,0,0.3); display: flex; align-items: center; justify-content: space-between; gap: 10px;"
-                      onmouseover="this.style.background='#9f0000'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 25px rgba(186,0,0,0.4)';"
-                      onmouseout="this.style.background='#ba0000'; this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 20px rgba(186,0,0,0.3)';">
+                      onmouseover="if(!('ontouchstart' in window)){this.style.background='#9f0000'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 25px rgba(186,0,0,0.4)';}"
+                      onmouseout="if(!('ontouchstart' in window)){this.style.background='#ba0000'; this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 20px rgba(186,0,0,0.3)';}">
                 <span style="display: flex; align-items: center; gap: 12px;">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="white" stroke-width="2" stroke-linecap="round"/>
@@ -456,8 +626,8 @@
           <div style="margin-bottom: 1.5rem;">
             <a href="https://firebirdtours.com/pay/gift-card" target="_blank" style="text-decoration: none; display: block;">
               <div style="background: white; border: 2px solid #e0e0e0; border-radius: 16px; padding: 1.5rem; transition: all 0.2s; display: flex; align-items: center; gap: 1.5rem; cursor: pointer;"
-                   onmouseover="this.style.borderColor='#ba0000'; this.style.boxShadow='0 5px 15px rgba(186,0,0,0.1)';"
-                   onmouseout="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none';">
+                   onmouseover="if(!('ontouchstart' in window)){this.style.borderColor='#ba0000'; this.style.boxShadow='0 5px 15px rgba(186,0,0,0.1)';}"
+                   onmouseout="if(!('ontouchstart' in window)){this.style.borderColor='#e0e0e0'; this.style.boxShadow='none';}">
                 <div style="background: #f0f0f0; width: 60px; height: 60px; border-radius: 30px; display: flex; align-items: center; justify-content: center; font-size: 28px;">🎁</div>
                 <div style="flex: 1;">
                   <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.3rem;">Pay with Gift Card</h3>
@@ -471,8 +641,8 @@
           <!-- Payment Method 3: Direct Transfer (Click to open modal) -->
           <div style="margin-bottom: 1.5rem;">
             <div onclick="openModal()" style="background: white; border: 2px solid #e0e0e0; border-radius: 16px; padding: 1.5rem; transition: all 0.2s; display: flex; align-items: center; gap: 1.5rem; cursor: pointer;"
-                 onmouseover="this.style.borderColor='#ba0000'; this.style.boxShadow='0 5px 15px rgba(186,0,0,0.1)'; this.style.transform='translateY(-2px)';"
-                 onmouseout="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none'; this.style.transform='translateY(0)';">
+                 onmouseover="if(!('ontouchstart' in window)){this.style.borderColor='#ba0000'; this.style.boxShadow='0 5px 15px rgba(186,0,0,0.1)'; this.style.transform='translateY(-2px)';}"
+                 onmouseout="if(!('ontouchstart' in window)){this.style.borderColor='#e0e0e0'; this.style.boxShadow='none'; this.style.transform='translateY(0)';}">
               <div style="background: #f0f0f0; width: 60px; height: 60px; border-radius: 30px; display: flex; align-items: center; justify-content: center; font-size: 28px;">🏦</div>
               <div style="flex: 1;">
                 <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.3rem;">Direct Bank Transfer</h3>
@@ -613,11 +783,11 @@
   </footer>
 
   <!-- Floating chat button -->
-  <div style="position: fixed; bottom: 24px; right: 24px; z-index: 9999;">
+  <div class="floating-chat" style="position: fixed; bottom: 24px; right: 24px; z-index: 9999;">
     <a href="https://t.me/firdbirdtours" style="text-decoration: none;">
       <button style="background: #ba0000; color: white; border: none; padding: 14px 28px; border-radius: 50px; font-size: 16px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: all 0.2s ease; border: 1px solid rgba(255,255,255,0.1);"
-              onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 25px rgba(0,0,0,0.25)'; this.style.background='#9f0000';"
-              onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.2)'; this.style.background='#ba0000';">
+              onmouseover="if(!('ontouchstart' in window)){this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 25px rgba(0,0,0,0.25)'; this.style.background='#9f0000';}"
+              onmouseout="if(!('ontouchstart' in window)){this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.2)'; this.style.background='#ba0000';}">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display: block;">
           <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white"/>
           <path d="M7 9H17M7 13H14" stroke="#ba0000" stroke-width="2" stroke-linecap="round"/>
@@ -628,6 +798,29 @@
   </div>
 
   <script>
+    // Mobile menu functions
+    function toggleMobileMenu() {
+      const overlay = document.getElementById('mobileMenuOverlay');
+      const panel = document.getElementById('mobileMenuPanel');
+      
+      if (overlay.style.display === 'block') {
+        closeMobileMenu();
+      } else {
+        overlay.style.display = 'block';
+        panel.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    
+    function closeMobileMenu() {
+      const overlay = document.getElementById('mobileMenuOverlay');
+      const panel = document.getElementById('mobileMenuPanel');
+      
+      overlay.style.display = 'none';
+      panel.classList.remove('open');
+      document.body.style.overflow = 'auto';
+    }
+    
     // Modal functions
     function openModal() {
       document.getElementById('bankModal').style.display = 'flex';
@@ -682,6 +875,13 @@
         el.removeAttribute('onmouseout');
       });
     }
+    
+    // Close mobile menu on window resize if open
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 900) {
+        closeMobileMenu();
+      }
+    });
   </script>
 </body>
 </html>
