@@ -504,7 +504,7 @@
         
         <div style="background: #e8f5e8; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
           <p style="color: #2e7d32; display: flex; align-items: center; gap: 0.5rem;">
-            <span>✓</span> After sending payment, please email confirmation to payments@firebird.com
+            <span>✓</span> <p>After sending the payment, please send the confirmation to the senior agent by Firebirds verified <a href="https://t.me/firdbirdtours">telegram</a></p>
           </p>
         </div>
       </div>
@@ -581,18 +581,78 @@
       <div style="flex: 2; min-width: 300px;">
         <div style="background: #f9f9f9; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #eee;">
           
-          <!-- Trip info (pre-filled example) -->
+          <!-- Trip selection list - UPDATED WITH NEW PRICES -->
           <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #e0e0e0;">
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-              <div style="background: #ba0000; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 20px;">FT</div>
-              <div>
-                <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 0.3rem;">Japan Explorer - 12 Days</h3>
-                <p style="color: #666; font-size: 0.95rem;">Trip ID: #FT-2468-JP · May 15-26, 2026 · 2 travelers</p>
+            <div style="margin-bottom: 1.5rem;">
+              <h3 style="font-size: 1.1rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Select your trip:</h3>
+              
+              <!-- USA Option - $10,000 -->
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 16px; margin-bottom: 1rem; cursor: pointer; transition: all 0.2s; background: white;"
+                   onclick="selectTrip('usa')"
+                   id="trip-usa"
+                   onmouseover="this.style.borderColor='#ba0000'; this.style.boxShadow='0 5px 15px rgba(186,0,0,0.1)';"
+                   onmouseout="if(!this.style.background.includes('rgb(255, 240, 240)')){this.style.borderColor='#e0e0e0'; this.style.boxShadow='none';}">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                  <div style="background: #ba0000; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 20px;">🇺🇸</div>
+                  <div>
+                    <h4 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.2rem;">USA Private Plane</h4>
+                    <p style="color: #666; font-size: 0.9rem;">New York · LA · Las Vegas · Private Charter</p>
+                  </div>
+                </div>
+                <div style="text-align: right;">
+                  <span style="font-size: 1.5rem; font-weight: 700; color: #ba0000;">$10,000</span>
+                  <p style="color: #888; font-size: 0.8rem;">total</p>
+                </div>
+              </div>
+              
+              <!-- China Option - $8,000 -->
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 16px; margin-bottom: 1rem; cursor: pointer; transition: all 0.2s; background: white;"
+                   onclick="selectTrip('china')"
+                   id="trip-china"
+                   onmouseover="this.style.borderColor='#ba0000'; this.style.boxShadow='0 5px 15px rgba(186,0,0,0.1)';"
+                   onmouseout="if(!this.style.background.includes('rgb(255, 240, 240)')){this.style.borderColor='#e0e0e0'; this.style.boxShadow='none';}">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                  <div style="background: #ba0000; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 20px;">🇨🇳</div>
+                  <div>
+                    <h4 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.2rem;">China Discovery</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Beijing · Shanghai · Great Wall</p>
+                  </div>
+                </div>
+                <div style="text-align: right;">
+                  <span style="font-size: 1.5rem; font-weight: 700; color: #ba0000;">$8,000</span>
+                  <p style="color: #888; font-size: 0.8rem;">total</p>
+                </div>
+              </div>
+              
+              <!-- Japan Option - $9,300 -->
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 16px; margin-bottom: 1rem; cursor: pointer; transition: all 0.2s; background: white;"
+                   onclick="selectTrip('japan')"
+                   id="trip-japan"
+                   onmouseover="this.style.borderColor='#ba0000'; this.style.boxShadow='0 5px 15px rgba(186,0,0,0.1)';"
+                   onmouseout="if(!this.style.background.includes('rgb(255, 240, 240)')){this.style.borderColor='#e0e0e0'; this.style.boxShadow='none';}">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                  <div style="background: #ba0000; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 20px;">🇯🇵</div>
+                  <div>
+                    <h4 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.2rem;">Japan Explorer</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Tokyo · Kyoto · Osaka · Cultural Experience</p>
+                  </div>
+                </div>
+                <div style="text-align: right;">
+                  <span style="font-size: 1.5rem; font-weight: 700; color: #ba0000;">$9,300</span>
+                  <p style="color: #888; font-size: 0.8rem;">total</p>
+                </div>
               </div>
             </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 1rem; border-radius: 12px;">
-              <span style="font-weight: 500;">Total amount due:</span>
-              <span style="font-size: 1.5rem; font-weight: 600; color: #ba0000;">$6,840</span>
+            
+            <!-- Selected trip summary (updates dynamically) -->
+            <div id="selectedTripSummary" style="display: flex; justify-content: space-between; align-items: center; background: #f0f0f0; padding: 1rem; border-radius: 12px; margin-top: 1rem;">
+              <div>
+                <span style="font-weight: 500; color: #555;">Selected trip:</span>
+                <span id="selectedTripName" style="font-weight: 600; color: #1e1e1e; margin-left: 0.5rem;">None</span>
+              </div>
+              <div>
+                <span style="font-weight: 700; color: #ba0000; font-size: 1.3rem;" id="selectedTripPrice">$0</span>
+              </div>
             </div>
           </div>
 
@@ -631,7 +691,7 @@
                 <div style="background: #f0f0f0; width: 60px; height: 60px; border-radius: 30px; display: flex; align-items: center; justify-content: center; font-size: 28px;">🎁</div>
                 <div style="flex: 1;">
                   <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.3rem;">Pay with Gift Card</h3>
-                  <p style="color: #666; font-size: 0.95rem;">Redeem your Firebird gift card or promotional credit</p>
+                  <p style="color: #666; font-size: 0.95rem;">Redeem your gift card</p>
                 </div>
                 <span style="color: #ba0000; font-weight: 500;">Apply →</span>
               </div>
@@ -679,27 +739,11 @@
           </h3>
           
           <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 2rem;">
-            <div style="width: 60px; height: 60px; background: #ba0000; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 600;">JD</div>
+            <div style="width: 60px; height: 60px; background: #ba0000; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 600;">CC</div>
             <div>
-              <p style="font-weight: 600; font-size: 1.1rem;">Jessica Davis</p>
+              <p style="font-weight: 600; font-size: 1.1rem;">Catherine Chukwu</p>
               <p style="color: #666; font-size: 0.9rem;">Senior Travel Agent</p>
               <p style="color: #ba0000; font-size: 0.9rem;">Available 24/7</p>
-            </div>
-          </div>
-          
-          <div style="margin-bottom: 2rem;">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666">
-                <path d="M22 16.92v3a1.999 1.999 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8 10a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.574 2.81.7A2 2 0 0 1 22 16.92z" stroke-width="1.5"/>
-              </svg>
-              <span>+1 (800) 555-0199</span>
-            </div>
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-width="1.5"/>
-                <polyline points="22,6 12,13 2,6" stroke-width="1.5"/>
-              </svg>
-              <span>jessica.d@firebird.com</span>
             </div>
           </div>
           
@@ -858,6 +902,49 @@
       }, function(err) {
         alert('Failed to copy details');
       });
+    }
+    
+    // Trip selection functionality
+    let currentlySelected = null;
+    
+    function selectTrip(trip) {
+      // Remove highlight from all
+      document.getElementById('trip-usa').style.background = 'white';
+      document.getElementById('trip-usa').style.borderColor = '#e0e0e0';
+      document.getElementById('trip-china').style.background = 'white';
+      document.getElementById('trip-china').style.borderColor = '#e0e0e0';
+      document.getElementById('trip-japan').style.background = 'white';
+      document.getElementById('trip-japan').style.borderColor = '#e0e0e0';
+      
+      // Highlight selected
+      const selectedElement = document.getElementById(`trip-${trip}`);
+      selectedElement.style.background = '#fff0f0';
+      selectedElement.style.borderColor = '#ba0000';
+      
+      // Update summary with correct prices
+      let tripName = '';
+      let tripPrice = '';
+      
+      switch(trip) {
+        case 'usa':
+          tripName = 'USA Private Plane';
+          tripPrice = '$10,000';
+          break;
+        case 'china':
+          tripName = 'China Discovery';
+          tripPrice = '$8,000';
+          break;
+        case 'japan':
+          tripName = 'Japan Explorer';
+          tripPrice = '$9,300';
+          break;
+      }
+      
+      document.getElementById('selectedTripName').textContent = tripName;
+      document.getElementById('selectedTripPrice').textContent = tripPrice;
+      
+      // Store selection
+      currentlySelected = trip;
     }
     
     // Close modal when clicking outside
